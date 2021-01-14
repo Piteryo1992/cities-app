@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'application'
+	id "com.heroku.sdk.heroku-gradle" version "2.0.0"
 }
 
 group = 'com.example'
@@ -23,3 +25,13 @@ dependencies {
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 }
+
+heroku {
+	appName = "pit-cities-app"
+	includes = ["build/libs/cities-api-0.0.1-SNAPSHOT.jar"]
+	processTypes(
+			web: "java -jar build/libs/cities-api-0.0.1-SNAPSHOT.jar"
+	)
+}
+
+mainClassName = 'com/example/citiesapi/CitiesApiApplication'
