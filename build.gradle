@@ -32,7 +32,7 @@ heroku {
 	includes = ["build/libs/cities-api-0.0.1-SNAPSHOT.jar"]
 	includeBuildDir = false
 	processTypes(
-			web: "java -jar build/libs/cities-api-0.0.1-SNAPSHOT.jar"
+			web: 'java -Dserver.port={$PORT} -jar build/libs/cities-api-0.0.1-SNAPSHOT.jar'
 	)
 }
 
